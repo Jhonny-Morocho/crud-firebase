@@ -39,4 +39,20 @@ export class UsuarioService {
     );
     return usuarioList;
   }
+  eliminarUsuario(usuario:UsuarioModel[]){
+    return this.httCLiente.put(this.dominio,usuario).pipe(
+      map(res=>{
+          console.log(res);
+          return this.crearArray(res);
+        })
+    );
+  }
+  editarUsuario(usuario:UsuarioModel[]){
+    return this.httCLiente.put(this.dominio,usuario).pipe(
+      map(res=>{
+          console.log(res);
+          return this.crearArray(res);
+        })
+    );
+  }
 }

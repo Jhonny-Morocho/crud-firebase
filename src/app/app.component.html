@@ -1,3 +1,4 @@
+
 <div class="container mt-5 border pt-4 pb-4 pl-4 pr-4">
   <div class="row">
     <div class="col-md-5 ">
@@ -42,6 +43,7 @@
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Correo</th>
+            <th>Telefono</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -52,8 +54,9 @@
             <td>{{ item.nombre}}</td>
             <td>{{ item.apellido}}</td>
             <td>{{ item.correo}}</td>
+            <td>{{ item.telefono}}</td>
             <td>
-                <button type="button" class="btn btn-success" (click)="editar()">Editar</button>
+                <button type="button" class="btn btn-success" (click)="editar(item.id)">Editar</button>
                 <button type="button" class="btn btn-danger" (click)="eliminar(item.id)">Eliminar</button>
             </td>
           </tr>
