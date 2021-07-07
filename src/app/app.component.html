@@ -1,0 +1,64 @@
+<div class="container mt-5 border pt-4 pb-4 pl-4 pr-4">
+  <div class="row">
+    <div class="col-md-5 ">
+      <form [formGroup]="formUsuario" (ngSubmit)="crearUsuario()">
+        <div class="md-2">
+          <label for="exampleInputEmail1" class="form-label">Nombre </label>
+          <input type="text" class="form-control"  formControlName="nombre" aria-describedby="emailHelp">
+        </div>
+        <div class="md-2">
+          <label for="exampleInputEmail1" class="form-label">Apellido </label>
+          <input type="text" class="form-control" formControlName="apellido" aria-describedby="emailHelp">
+        </div>
+        <div class="md-6">
+          <label for="exampleInputEmail1" class="form-label">Correo</label>
+          <input type="email" class="form-control" formControlName="correo" aria-describedby="emailHelp">
+        </div>
+        <div class="md-6">
+          <label for="exampleInputPassword1" class="form-label">Telefono</label>
+          <input type="number" class="form-control" formControlName="telefono">
+        </div>
+        <div class="md-6 mt-4">
+          <div class="alert alert-warning text-center" role="alert" *ngIf="datosCompletos==false">
+            Debe completar todos los campos requeridos
+          </div>
+        </div>
+        <div class="md-6 mt-4">
+          <div class="alert alert-success text-center" role="alert" *ngIf="datosCompletos==true">
+            Datos guardados
+          </div>
+        </div>
+        <div class="md-6 mt-4">
+          <button type="submit" class="btn btn-primary">Registrar</button>
+        </div>
+      </form>
+
+    </div>
+    <div class="col-md-7">
+      <table class="table">
+        <thead class="table-light">
+          <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+
+        <tbody >
+          <tr *ngFor="let item of usuarioArray,let i = index">
+            <td>{{ i+1}}</td>
+            <td>{{ item.nombre}}</td>
+            <td>{{ item.apellido}}</td>
+            <td>{{ item.correo}}</td>
+            <td>
+                <button type="button" class="btn btn-success" (click)="editar()">Editar</button>
+                <button type="button" class="btn btn-danger" (click)="eliminar(item.id)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
