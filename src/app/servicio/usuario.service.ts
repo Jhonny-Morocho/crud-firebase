@@ -6,11 +6,11 @@ import {UsuarioModel} from 'src/app/models/usuario.model';
   providedIn: 'root'
 })
 export class UsuarioService {
-  dominio:string="https://crud-af3a4-default-rtdb.firebaseio.com/usuario.json";
+  dominio:string="https://vacunados-c7bb6-default-rtdb.firebaseio.com/.json";
 
   constructor(private httCLiente:HttpClient) { }
   //este codigo es de angular
-  listarUsuario(){
+  cargarDatosBd(){
     return this.httCLiente.get(this.dominio).pipe(
       map(res=>{
           console.log(res);
@@ -39,20 +39,5 @@ export class UsuarioService {
     );
     return usuarioList;
   }
-  eliminarUsuario(usuario:UsuarioModel[]){
-    return this.httCLiente.put(this.dominio,usuario).pipe(
-      map(res=>{
-          console.log(res);
-          return this.crearArray(res);
-        })
-    );
-  }
-  editarUsuario(usuario:UsuarioModel[]){
-    return this.httCLiente.put(this.dominio,usuario).pipe(
-      map(res=>{
-          console.log(res);
-          return this.crearArray(res);
-        })
-    );
-  }
+
 }

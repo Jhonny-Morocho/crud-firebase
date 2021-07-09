@@ -1,67 +1,31 @@
 
 <div class="container mt-5 border pt-4 pb-4 pl-4 pr-4">
   <div class="row">
-    <div class="col-md-5 ">
-      <form [formGroup]="formUsuario" (ngSubmit)="crearUsuario()">
-        <div class="md-2">
-          <label for="exampleInputEmail1" class="form-label">Nombre </label>
-          <input type="text" class="form-control"  formControlName="nombre" aria-describedby="emailHelp">
-        </div>
-        <div class="md-2">
-          <label for="exampleInputEmail1" class="form-label">Apellido </label>
-          <input type="text" class="form-control" formControlName="apellido" aria-describedby="emailHelp">
-        </div>
-        <div class="md-6">
-          <label for="exampleInputEmail1" class="form-label">Correo</label>
-          <input type="email" class="form-control" formControlName="correo" aria-describedby="emailHelp">
-        </div>
-        <div class="md-6">
-          <label for="exampleInputPassword1" class="form-label">Telefono</label>
-          <input type="number" class="form-control" formControlName="telefono">
-        </div>
-        <div class="md-6 mt-4">
-          <div class="alert alert-warning text-center" role="alert" *ngIf="datosCompletos==false">
-            Debe completar todos los campos requeridos
-          </div>
-        </div>
-        <div class="md-6 mt-4">
-          <div class="alert alert-success text-center" role="alert" *ngIf="datosCompletos==true">
-            Datos guardados
-          </div>
-        </div>
-        <div class="md-6 mt-4">
-          <button type="submit" class="btn btn-primary">Registrar</button>
-        </div>
-      </form>
-
+    <!-- Search form -->
+    <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2" (ngSubmit)="buscar()"  [formGroup]="formUsuario" >
+      <input class="form-control form-control-sm mr-3 w-75" type="text"
+        placeholder="Buscar"
+        formControlName="buscar"
+        aria-label="Search">
+      <i class="fas fa-search" aria-hidden="true"></i>
+      <button type="submit" class="btn btn-primary ml-2">Buscar</button>
+    </form>
+    <div class="container">
+      <p>Usuario</p>
+      <ul class="list-group">
+        <li class="list-group-item">Nombre: {{ instanciaUsuario.nombre }}</li>
+        <li class="list-group-item">Apellido: {{ instanciaUsuario.apellido }}</li>
+        <li class="list-group-item">Cedula: {{ instanciaUsuario.cedula }}</li>
+        <li class="list-group-item">Canton: {{ instanciaUsuario.canton }}</li>
+        <li class="list-group-item">Provincia: {{ instanciaUsuario.provincia }}</li>
+        <li class="list-group-item">Parroquia: {{ instanciaUsuario.parroquia }}</li>
+        <li class="list-group-item">Centro de vacunación: {{ instanciaUsuario.centrovacunacion }}</li>
+      </ul>
     </div>
-    <div class="col-md-7">
-      <table class="table">
-        <thead class="table-light">
-          <tr>
-            <th>#</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Correo</th>
-            <th>Telefono</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-
-        <tbody >
-          <tr *ngFor="let item of usuarioArray,let i = index">
-            <td>{{ i+1}}</td>
-            <td>{{ item.nombre}}</td>
-            <td>{{ item.apellido}}</td>
-            <td>{{ item.correo}}</td>
-            <td>{{ item.telefono}}</td>
-            <td>
-                <button type="button" class="btn btn-success" (click)="editar(item.id)">Editar</button>
-                <button type="button" class="btn btn-danger" (click)="eliminar(item.id)">Eliminar</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <!-- <div class="container" *ngIf="!usuarioEncontrado">
+      <div class="alert alert-danger" role="alert">
+        USUARIO NO ENCONTRADO
+      </div>
+    </div> -->
   </div>
 </div>

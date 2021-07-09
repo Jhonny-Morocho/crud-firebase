@@ -1,7 +1,11 @@
  export class UsuarioModel{
   nombre:any;
   apellido:any;
-  correo:any;
+  cedula:any;
   id?:any;
-  telefono:any;
+  canton?:any;
+  parroquia?:any;
+  provincia?:any;
+  direccion?:any;
+  centrovacunacion?:any;
 }
